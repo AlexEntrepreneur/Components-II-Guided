@@ -1,0 +1,38 @@
+.tabs-component {
+  .tabs-container {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+
+    .tab {
+      padding: 10px 0;
+      color: white;
+      background: #313131;
+      width: calc(20% - 20px);
+      text-align: center;
+      cursor: pointer;
+    }
+
+    // .tab[data-tab='1'] {
+    //   background: dodgerblue;
+    // }
+  }
+
+  .tab-content-container {
+    position: relative;
+    width: 100%;
+
+    .tab-content {
+      position: absolute;
+      top: 0;
+      padding: 50px 20px;
+      border: 1px solid #DCDCDC;
+      background-color: white;
+      display: none;
+    }
+
+    .show-content {
+      display: block;
+    }
+  }
+}
