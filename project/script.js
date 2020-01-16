@@ -62,7 +62,6 @@ async function getData() {
     // Failure lives inside the catch block
     console.log(error);
   }
-
 }
 
 getData();
