@@ -13,3 +13,7 @@ function createCard(title, imgsrc) {
 
   return card;
 }
+
+// Use axios to fetch data from the dogs API
+// If successful, generate new cards containing the image data received from the API
+// If unsuccessful, log the error message.
