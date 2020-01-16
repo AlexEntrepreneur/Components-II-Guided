@@ -14,6 +14,20 @@ function createCard(title, imgsrc) {
   return card;
 }
 
+const container = document.querySelector('.container');
+
 // Use axios to fetch data from the dogs API
-// If successful, generate new cards containing the image data received from the API
-// If unsuccessful, log the error message.
+axios.get('https://dog.ceo/api/breeds/image/random/12')
+  .then(response => {
+    // If successful, generate new cards containing the image data received from the API
+    const responseArray = response.data.message;
+    responseArray.forEach((img) => {
+      const dogBreed = img.split('/')[4].replace('-', ' ').toUpperCase()
+      const newCard = createCard(dogBreed, img);
+      container.append(newCard);
+    });
+  })
+  .catch(error => {
+    // If unsuccessful, log the error message.
+    console.log(error);
+  });
