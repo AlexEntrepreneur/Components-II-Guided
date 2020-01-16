@@ -1,7 +1,18 @@
 //====== Creating Promises ======//
+// Creating a simple promise
+const newPromise = new Promise((resolve, reject) => {
+  const shouldResolve = true;
 
+  setTimeout(() => {
+    if (shouldResolve) {
+      resolve('Promise Resolved!');
+    } else {
+      reject('Error! Promise Rejected.');
+    }
+  }, 2000);
+});
 
-
+console.log(newPromise);
 
 
 //====== Consuming Promises ======//
