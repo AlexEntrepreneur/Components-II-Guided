@@ -14,12 +14,58 @@ const newPromise = new Promise((resolve, reject) => {
 
 console.log(newPromise);
 
+// Rufai
+const euFlex = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    const array = ['Alex', 'Dimos', 'Kobby', 'Kolade'];
+    if (array.length === 4) {
+      resolve('this is true');
+    } else {
+      reject('it is false');
+    }
+  }, 2000)
+});
+
+console.log(euFlex);
+
+// Amin
+const sprint = ms => {
+  return new Promise((resolve, reject) => {
+    const recordTime = ms / 1000;
+    if (ms > 999) {
+      resolve(`This sprinter ran in ${recordTime}s`);
+    } else {
+      reject(new Error(`Too slow!`));
+    }
+  });
+};
+// console.log(sprint(1000));
 
 //====== Consuming Promises ======//
 // Then Catch Syntax
+newPromise.then((msg) => {
+  console.log(msg + " Some extra information");
+}).catch((error) => {
+  console.log(error);
+});
 
-// Async Await Syntax
+// Async Await + Try Catch Syntax
+// We tell JS that our function is asynchronous
+// with the async keyword
+async function getData() {
+  try {
+    // await is our happy path (success scenario)
+    // Success lives inside the try block
+    const result = await sprint(10000);
+    console.log(result);
+  } catch(error) {
+    // Failure lives inside the catch block
+    console.log(error);
+  }
 
+}
+
+getData();
 
 
 //====== Making HTTP Requests ======//
