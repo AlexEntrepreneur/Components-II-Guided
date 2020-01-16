@@ -41,10 +41,29 @@ const sprint = ms => {
 };
 // console.log(sprint(1000));
 
+// Amin
+const newPlayerSigning = new Promise((resolve, reject) => {
+  const shouldResolve = true;
+  setTimeout(() => {
+    if (shouldResolve) {
+      resolve('Promise Resolved!');
+    } else {
+      reject('Error! Promise Rejected.');
+    }
+  }, 2000);
+});
+
 //====== Consuming Promises ======//
 // Then Catch Syntax
 newPromise.then((msg) => {
   console.log(msg + " Some extra information");
+}).catch((error) => {
+  console.log(error);
+});
+
+// Amin
+newPlayerSigning.then((msg) => {
+  console.log(msg + " Man Utd signed a new player in the January transfer window!");
 }).catch((error) => {
   console.log(error);
 });
@@ -68,8 +87,13 @@ getData();
 
 
 //====== Making HTTP Requests ======//
-
-
+axios.get('http://api.openweathermap.org/data/2.5/group?id=524901,703448,2643743&units=metric&appid=6c3220540cfd11e43807a5cde257fc1b')
+  .then(response => {
+    console.log(response);
+  })
+  .catch(error => {
+    console.log(error);
+  });
   
 
 
@@ -112,3 +136,23 @@ function createPanel(title, img) {
 
   return panel;
 }
+
+// 2. Select the container in which to create new components
+const accordion = document.querySelector('.accordion');
+
+// 1. Send a get request to the API
+axios.get('https://dog.ceo/api/breeds/image/random/12')
+  .then(res => {
+    // Find the array of data in the response object
+    const dogsArray = res.data.message;
+
+    // Loop through the data and generate new panels
+    dogsArray.forEach((img, index) => {
+      const newPanel = createPanel(`Doggo ${index + 1}`, img);
+      accordion.append(newPanel);
+    });
+
+  })
+  .catch(error => {
+    console.log(error);
+  });
